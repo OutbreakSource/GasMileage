@@ -1,9 +1,90 @@
 import java.util.Scanner;  // Access the Scanner class
 import java.io.*;          // Access PrintWriter and related classes
+import java.io.*;                   //    PrintWriter file class
+import java.text.DecimalFormat;     //    Padding methods
+import java.util.Scanner;           //    partiallyFillArray method
+import java.text.SimpleDateFormat;  //    getCurrentTime method
+import java.util.Calendar;          //    getCurrentTime method
+import java.util.Date;   
+
+/**
+  public static String leftPad (double number, 
+                                 int width, 
+                                 String mask, 
+                                 String padding) {
+      final String NO_RIGHT_PAD = "";  // No padding on the right
+      String strPad;                   // String to be returned
+   
+      //  1. Convert number to a String and
+      //  2. Use the string padding method to finish the job
+
+      DecimalFormat fmt = new DecimalFormat(mask);
+      strPad = padString(fmt.format(number), width, padding, NO_RIGHT_PAD);
+      return strPad;
+   } // end leftPad, 4 parameters
+*/
+
+
 
 public class project2 {
 
+   public static void ExplainProgram(){
+   System.out.println("This program calculated the reimbursements from specific gas mileages.");
+   }
+   
+   public static void FileScan(String[] args) throws IOException{
+   
+      final String INPUT_FILE  = "DanielMartinez_2_01_Input.txt";
+      final String OUTPUT_FILE = "DanielMartinez_2_01_Output.txt";
+      
+      int numInputLines = 0;           // Number of lines in the input file
+      int numValidLines = 0;           // Number of valid lines in the input file
+      int numInvalidLines = 0;         // Number of invalid lines read
+     
+      File inputDataFile = new File(INPUT_FILE);
+      Scanner inputFile  = new Scanner(inputDataFile);
+      
+      FileWriter outputDataFile = new FileWriter(OUTPUT_FILE);
+      PrintWriter outputFile = new PrintWriter(outputDataFile);
+      
+      while (inputFile.hasNext()) {
+         numInputLines++;
+      }//first loop
+      
+      double[] gasolina = new double[numInputLines];
+      for(int i = 0; i<11; i++){
+         gasolina[i] = inputFile.nextDouble();
+         System.out.println(gasolina[i]);
+         }
+         
+   
+   }
    public static void main(String[] args) throws IOException {
+   
+   FileScan();
+   }
+ 
+ /*
+   public static void FillData(){
+   
+      File inputDataFile = new File(INPUT_FILE);
+      Scanner inputFile  = new Scanner(inputDataFile);
+      
+      FileWriter outputDataFile = new FileWriter(OUTPUT_FILE);
+      PrintWriter outputFile = new PrintWriter(outputDataFile);
+   
+      double[] gasolina = new double[11];
+   
+      for(int i = 0; i<11; i++){
+            gasolina[i] = inputFile.nextDouble();
+         }
+         
+   }
+   */
+
+/* //Closing
+   public static void main(String[] args) throws IOException {
+   //ExplainProgram();
    
       final String INPUT_FILE  = "DanielMartinez_2_01_Input.txt";
       final String OUTPUT_FILE = "DanielMartinez_2_01_Output.txt";
@@ -87,4 +168,7 @@ public class project2 {
       System.exit(0);	
       
    } // End main
+   
+ */  
  }// End of class
+ 
