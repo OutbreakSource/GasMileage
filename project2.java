@@ -5,7 +5,11 @@ import java.text.DecimalFormat;     //    Padding methods
 import java.util.Scanner;           //    partiallyFillArray method
 import java.text.SimpleDateFormat;  //    getCurrentTime method
 import java.util.Calendar;          //    getCurrentTime method
-import java.util.Date;   
+import java.util.Date;  
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner; 
+
 
 /**
   public static String leftPad (double number, 
@@ -28,41 +32,36 @@ import java.util.Date;
 
 public class project2 {
 
+   static int length;
+
    public static void ExplainProgram(){
-   System.out.println("This program calculated the reimbursements from specific gas mileages.");
+   System.out.println("This program calculated the reimbursements from specific gas mileages.");   
    }
    
-   public static void FileScan(String[] args) throws IOException{
+   public static void takeMilage(double milage[]) throws FileNotFoundException{ // scan file and store in milage array
+
+   Scanner scanner = new Scanner(new FileReader("DanielMartinez_2_01_Input.txt"));
+
+   int i=0;
+
+   while(scanner.hasNext()){
+
+      milage[i]=scanner.nextDouble();
+      i++;
+      length++;
+
+}
+}
+
+ 
    
-      final String INPUT_FILE  = "DanielMartinez_2_01_Input.txt";
-      final String OUTPUT_FILE = "DanielMartinez_2_01_Output.txt";
-      
-      int numInputLines = 0;           // Number of lines in the input file
-      int numValidLines = 0;           // Number of valid lines in the input file
-      int numInvalidLines = 0;         // Number of invalid lines read
-     
-      File inputDataFile = new File(INPUT_FILE);
-      Scanner inputFile  = new Scanner(inputDataFile);
-      
-      FileWriter outputDataFile = new FileWriter(OUTPUT_FILE);
-      PrintWriter outputFile = new PrintWriter(outputDataFile);
-      
-      while (inputFile.hasNext()) {
-         numInputLines++;
-      }//first loop
-      
-      double[] gasolina = new double[numInputLines];
-      for(int i = 0; i<11; i++){
-         gasolina[i] = inputFile.nextDouble();
-         System.out.println(gasolina[i]);
-         }
-         
-   
-   }
    public static void main(String[] args) throws IOException {
    
-   FileScan();
+   ExplainProgram();
+   takeMilage();
    }
+   
+   
  
  /*
    public static void FillData(){
